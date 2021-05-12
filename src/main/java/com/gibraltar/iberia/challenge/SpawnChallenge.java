@@ -209,23 +209,6 @@ public class SpawnChallenge extends Challenge {
     }
 
     @SubscribeEvent
-    public void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
-        if (event.player.world.playerEntities.size() == 1) {
-            MinecraftServer server = event.player.getServer();
-            long i = server.worlds[0].getWorldInfo().getWorldTime() + 24000L;
-            setAllWorldTimes(server, i - i % 24000L);
-        }
-    }
-
-    private void setAllWorldTimes(MinecraftServer server, long time)
-    {
-        for (int i = 0; i < server.worlds.length; ++i)
-        {
-            server.worlds[i].setWorldTime((long)time);
-        }
-    }
-
-    @SubscribeEvent
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         // Ensure that player iberia spawn is set to world iberia spawn
         EntityPlayer player = event.player;
